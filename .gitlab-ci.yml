@@ -1,0 +1,8 @@
+stages:
+  - test
+ 
+run_python_script:
+  stage: test
+  script:
+    - echo "Testing with some basic code"
+    - python example.py
