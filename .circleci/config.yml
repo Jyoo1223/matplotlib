@@ -3,16 +3,16 @@ version: 2.1
 jobs:
   build_cpp:
     docker:
-      - image: circleci/python:3.10  # You can use a Python image or another based on your project needs
+      - image: circleci/python:3.10  # Python Docker image for simplicity
     steps:
-      - checkout
+      - checkout  # Checkout the repository
       - run:
           name: Install clang++ dependencies
           command: |
             sudo apt-get update
-            sudo apt-get install -y clang
+            sudo apt-get install -y clang  # Install clang++ compiler
       - run:
-          name: Compile C++ code using clang++
+          name: Compile C++ code with clang++
           command: |
             clang++ basic.cpp -o basic  # Compile using clang++
       - run:
@@ -22,14 +22,14 @@ jobs:
 
   run_python_script:
     docker:
-      - image: circleci/python:3.10
+      - image: circleci/python:3.10  # Using a Python image
     steps:
-      - checkout
+      - checkout  # Checkout the repository
       - run:
           name: Install Python dependencies
           command: |
             python -m pip install --upgrade pip
-            pip install matplotlib
+            pip install matplotlib  # Install required Python packages
       - run:
           name: Run Python script
           command: |
