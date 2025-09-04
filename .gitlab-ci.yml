@@ -1,8 +1,21 @@
+image: python:3.10
+
 stages:
+  - build
   - test
- 
+
+before_script:
+  - python -m ensurepip --upgrade  # Ensure pip is installed
+  - python -m pip install --upgrade pip  # Upgrade pip to the latest version
+  - pip install matplotlib  # Install matplotlib
+
+build_job:
+  stage: build
+  script:
+    - echo "Build stage completed"
+
 run_python_script:
   stage: test
   script:
-    - echo "Testing with some basic code"
-    - python example.py
+    - echo "🚀 Starting CI Job"
+    - python3 graph_test.py
